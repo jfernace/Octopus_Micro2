@@ -14,7 +14,7 @@ COctopusLasers::COctopusLasers(CWnd* pParent)
 	B.Laser_561_is_On = false;
 	B.Laser_488_is_On = false;
 	B.Laser_639_is_On = false;
-	
+	//
 	Laser_405_good = false;
     Laser_488_good = false;
     Laser_561_good = false;
