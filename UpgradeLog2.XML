@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Octopus">
+</Property><Property Name="Solution File" Value="C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.sln">
+</Property><Property Name="User Options File" Value="C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.suo">
+</Property><Property Name="Date" Value="Thursday, October 08, 2015">
+</Property><Property Name="Time" Value="14:34 PM">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="2" Project="" Source="Octopus.sln" Description="Error creating backup file: C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="Octopus.suo" Description="File successfully backed up as C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.suo.old">
+</Event><Event ErrorLevel="0" Project="Octopus" Source="Octopus.vcproj" Description="Converting project file 'C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.vcproj'.">
+</Event><Event ErrorLevel="1" Project="Octopus" Source="Octopus.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="Octopus" Source="Octopus.vcproj" Description="MSB8012: $(TargetPath) ('C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\.\Release\Octopus.exe') does not match the Linker's OutputFile property value '.\Release/Octopus.exe' ('C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Release/Octopus.exe') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="Octopus" Source="Octopus.vcproj" Description="MSB8012: $(TargetPath) ('C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\.\Debug\Octopus.exe') does not match the Linker's OutputFile property value '.\Debug/Octopus.exe' ('C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Debug/Octopus.exe') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="Octopus" Source="Octopus.vcproj" Description="Done converting to new project file 'C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="Octopus" Source="Octopus.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Octopus.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Octopus.sln" Description="Converted">
+</Event></UpgradeLog>

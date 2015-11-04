@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6426f032-f3c5-46c2-975b-ebfd6d1e7773}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9566770e-9891-4247-b8d1-7f1f40901bb7}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{1febc5a4-a17c-4945-ac96-60d63313d69e}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="APTMotor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="APTSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Octopus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Octopus_LED.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusCameraDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusCameraDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusClock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusFocus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusLaser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusLasers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusObjectivePiezo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusScope.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusShutter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusStage545.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OctopusXCite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Octopus.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="APTMotor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="APTSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FTD2XX.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="levmar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Madlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Octopus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Octopus_LED.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusCameraDisplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusCameraDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusClock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusFocus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusGlobals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusLaser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusLasers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusObjectivePiezo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusScope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusShutter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusStage545.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oltypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RESOURCE.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usbdrvd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OctopusXCite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="LIB\blas.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="LIB\lapack.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="LIB\levmar.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="LIB\libf2c.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="oldaapi32.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="OLMEM32.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LIB\DT9812.dll">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\..\WINDOWS\system32\DRVSTORE\DT9812_Kmd_8647DAF1F16108A90CA951F7466DF289D72E793D\WdfCoInstaller01009.dll">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="RES\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\idr_main.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\no.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\octopus.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\OCTOPUS.RC2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\octopusDoc.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\running.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\stopped.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\yes.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\OFF.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\on.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

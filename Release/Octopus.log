@@ -1,0 +1,38 @@
+﻿Build started 11/3/2015 5:12:18 PM.
+     1>Project "C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching ".\Release\Octopus.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Libraries /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0710 /D _MBCS /D _AFXDLL /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Release/" /Fd".\Release/vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Octopus_LED.cpp OctopusCameraDlg.cpp OctopusLaser.cpp OctopusObjectivePiezo.cpp OctopusScript.cpp OctopusShutter.cpp OctopusView.cpp
+         Octopus_LED.cpp
+     1>c:\users\microscope2\documents\octopus\josh's copy of octopus072413v.090315\oldaapi.h(17): fatal error C1083: Cannot open include file: 'oltypes.h': No such file or directory
+         OctopusCameraDlg.cpp
+     1>OctopusCameraDlg.cpp(239): error C2660: 'CDialog::Initialize' : function does not take 1 arguments
+     1>OctopusCameraDlg.cpp(434): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDlg.cpp(436): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDlg.cpp(469): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusCameraDlg.cpp(511): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusCameraDlg.cpp(516): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusCameraDlg.cpp(517): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusCameraDlg.cpp(567): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusCameraDlg.cpp(600): warning C4010: single-line comment contains line-continuation character
+     1>OctopusCameraDlg.cpp(601): warning C4010: single-line comment contains line-continuation character
+         OctopusLaser.cpp
+     1>c:\users\microscope2\documents\octopus\josh's copy of octopus072413v.090315\oldaapi.h(17): fatal error C1083: Cannot open include file: 'oltypes.h': No such file or directory
+         OctopusObjectivePiezo.cpp
+     1>c:\users\microscope2\documents\octopus\josh's copy of octopus072413v.090315\oldaapi.h(17): fatal error C1083: Cannot open include file: 'oltypes.h': No such file or directory
+         OctopusScript.cpp
+     1>c:\users\microscope2\documents\octopus\josh's copy of octopus072413v.090315\oldaapi.h(17): fatal error C1083: Cannot open include file: 'oltypes.h': No such file or directory
+         OctopusShutter.cpp
+     1>OctopusShutter.cpp(328): warning C4309: '=' : truncation of constant value
+     1>OctopusShutter.cpp(330): warning C4309: '=' : truncation of constant value
+     1>OctopusShutter.cpp(529): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+         OctopusView.cpp
+     1>c:\users\microscope2\documents\octopus\josh's copy of octopus072413v.090315\oldaapi.h(17): fatal error C1083: Cannot open include file: 'oltypes.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\microscope2\Documents\Octopus\Josh's Copy of Octopus072413v.090315\Octopus.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.96
