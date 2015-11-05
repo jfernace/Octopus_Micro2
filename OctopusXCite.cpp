@@ -15,7 +15,7 @@ COctopusXCite::COctopusXCite(CWnd* pParent)
 	pPortScope        = NULL;
 	Scope_initialized = false;
 	old_position      = 0;
-
+	slampIntensity = "Starting...";
 	lampIntensity = 0;
 
 	if( Create(COctopusXCite::IDD, pParent) ) 
@@ -25,10 +25,12 @@ COctopusXCite::COctopusXCite(CWnd* pParent)
 	working     = false;
 	Path_camera = false;
 
-	m_Slider.SetRange( 0, 100 );
-	m_Slider.SetPos( 0 );
-	m_Slider.SetTicFreq( 10 );
+	//m_Slider.SetRange( 0, 100 );
+	//m_Slider.SetPos( 0 );
+	//m_Slider.SetTicFreq( 10 );
 	B.XCite_loaded = true;
+
+	Init();
 }
 
 BOOL COctopusXCite::OnInitDialog() 
@@ -180,52 +182,52 @@ bool COctopusXCite::Init( void )
 void COctopusXCite::DoDataExchange(CDataExchange* pDX) 
 {
 	CDialog::DoDataExchange( pDX );
-	DDX_Radio(pDX,		IDC_SCOPE_SSIZE_1,			        m_Radio_S);
-	DDX_Radio(pDX,		IDC_SCOPE_OBJ_1,			        m_Radio_OBJ);
-	DDX_Radio(pDX,		IDC_SCOPE_FW_1,			            m_Radio_FW);
-	DDX_Radio(pDX,		IDC_SCOPE_BFW_1,		            m_Radio_BFW);
-	DDX_Control(pDX,	IDC_SCOPE_POS,				        m_Pos);
-	DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER,		    m_Slider);
-	DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER_SETTING, m_Slider_Setting);
+	//DDX_Radio(pDX,		IDC_SCOPE_SSIZE_1,			        m_Radio_S);
+	//DDX_Radio(pDX,		IDC_SCOPE_OBJ_1,			        m_Radio_OBJ);
+	//DDX_Radio(pDX,		IDC_SCOPE_FW_1,			            m_Radio_FW);
+	//DDX_Radio(pDX,		IDC_SCOPE_BFW_1,		            m_Radio_BFW);
+	//DDX_Control(pDX,	IDC_SCOPE_POS,				        m_Pos);
+	//DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER,		    m_Slider);
+	//DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER_SETTING, m_Slider_Setting);
 
     DDX_Text( pDX, IDC_DOUT1 , slampIntensity);
 
 }  
 
 BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
-	ON_NOTIFY(NM_RELEASEDCAPTURE, IDC_SCOPE_INTENSITY_SLIDER, OnNMCustomdrawExecute)
-	ON_BN_CLICKED(IDC_SCOPE_DOWN,	     Z_StepDown)
-	ON_BN_CLICKED(IDC_SCOPE_UP,		     Z_StepUp)
-	ON_BN_CLICKED(IDC_SCOPE_ESC,		 ObjESC)
-	ON_BN_CLICKED(IDC_SCOPE_RTN,		 ObjRTN)
-	ON_BN_CLICKED(IDC_SCOPE_SSIZE_1,     OnObjectiveStepSize1)
-	ON_BN_CLICKED(IDC_SCOPE_SSIZE_2,     OnObjectiveStepSize2)
-	ON_BN_CLICKED(IDC_SCOPE_SSIZE_3,     OnObjectiveStepSize3)
-	ON_BN_CLICKED(IDC_SCOPE_SSIZE_4,     OnObjectiveStepSize4)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_1,       OnObj_1)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_2,       OnObj_2)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_3,       OnObj_3)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_4,       OnObj_4)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_5,       OnObj_5)
-	ON_BN_CLICKED(IDC_SCOPE_OBJ_6,       OnObj_6)
-	ON_BN_CLICKED(IDC_SCOPE_FW_1,        OnFW_1)
-	ON_BN_CLICKED(IDC_SCOPE_FW_2,        OnFW_2)
-	ON_BN_CLICKED(IDC_SCOPE_FW_3,        OnFW_3)
-	ON_BN_CLICKED(IDC_SCOPE_FW_4,        OnFW_4)
-	ON_BN_CLICKED(IDC_SCOPE_FW_5,        OnFW_5)
-	ON_BN_CLICKED(IDC_SCOPE_FW_6,        OnFW_6)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_1,       OnBFW_1)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_2,       OnBFW_2)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_3,       OnBFW_3)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_4,       OnBFW_4)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_5,       OnBFW_5)
-	ON_BN_CLICKED(IDC_SCOPE_BFW_6,       OnBFW_6)
-	ON_BN_CLICKED(IDC_SCOPE_PATH,        ToggleXCiteLEDStatus)
-	ON_WM_TIMER()
-	ON_STN_CLICKED(IDC_SCOPE_INTENSITY_SLIDER_SETTING, &COctopusXCite::OnStnClickedScopeIntensitySliderSetting)
-	ON_STN_CLICKED(IDC_SCOPE_POS, &COctopusXCite::OnStnClickedScopePos)
-	ON_STN_CLICKED(IDC_XCITE_ONOFF, &COctopusXCite::OnStnClickedXciteOnoff)
-	ON_STN_CLICKED(IDC_SHUTTER_IMAGE, &COctopusXCite::OnStnClickedShutterImage)
+	//ON_NOTIFY(NM_RELEASEDCAPTURE, IDC_SCOPE_INTENSITY_SLIDER, OnNMCustomdrawExecute)
+	//ON_BN_CLICKED(IDC_SCOPE_DOWN,	     Z_StepDown)
+	//ON_BN_CLICKED(IDC_SCOPE_UP,		     Z_StepUp)
+	//ON_BN_CLICKED(IDC_SCOPE_ESC,		 ObjESC)
+	//ON_BN_CLICKED(IDC_SCOPE_RTN,		 ObjRTN)
+	//ON_BN_CLICKED(IDC_SCOPE_SSIZE_1,     OnObjectiveStepSize1)
+	//ON_BN_CLICKED(IDC_SCOPE_SSIZE_2,     OnObjectiveStepSize2)
+	//ON_BN_CLICKED(IDC_SCOPE_SSIZE_3,     OnObjectiveStepSize3)
+	//ON_BN_CLICKED(IDC_SCOPE_SSIZE_4,     OnObjectiveStepSize4)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_1,       OnObj_1)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_2,       OnObj_2)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_3,       OnObj_3)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_4,       OnObj_4)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_5,       OnObj_5)
+	//ON_BN_CLICKED(IDC_SCOPE_OBJ_6,       OnObj_6)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_1,        OnFW_1)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_2,        OnFW_2)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_3,        OnFW_3)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_4,        OnFW_4)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_5,        OnFW_5)
+	//ON_BN_CLICKED(IDC_SCOPE_FW_6,        OnFW_6)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_1,       OnBFW_1)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_2,       OnBFW_2)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_3,       OnBFW_3)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_4,       OnBFW_4)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_5,       OnBFW_5)
+	//ON_BN_CLICKED(IDC_SCOPE_BFW_6,       OnBFW_6)
+	//ON_BN_CLICKED(IDC_SCOPE_PATH,        ToggleXCiteLEDStatus)
+	//ON_WM_TIMER()
+	//ON_STN_CLICKED(IDC_SCOPE_INTENSITY_SLIDER_SETTING, &COctopusXCite::OnStnClickedScopeIntensitySliderSetting)
+	//ON_STN_CLICKED(IDC_SCOPE_POS, &COctopusXCite::OnStnClickedScopePos)
+	//ON_STN_CLICKED(IDC_XCITE_ONOFF, &COctopusXCite::OnStnClickedXciteOnoff)
+	//ON_STN_CLICKED(IDC_SHUTTER_IMAGE, &COctopusXCite::OnStnClickedShutterImage)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_XCITE_INTENSITY_SLIDER2, &COctopusXCite::OnNMCustomdrawXciteIntensitySlider2)
 END_MESSAGE_MAP()
 
@@ -747,18 +749,35 @@ void COctopusXCite::OnNMCustomdrawXciteIntensitySlider2(NMHDR *pNMHDR, LRESULT *
 void COctopusXCite::GetIntensityLevel()
 {
 		CString temp;
-			CString response;
 
- 
     working = true;
 
-	WriteScope(_T("ii\r\n"));
+	WriteScope(_T("ii\r\n"));//command to ask camera for lamp intensity
 	Sleep(30);
-		while ( ReadScope( 1 ) == "\r" ) { ; } //find the number
- 
-	slampIntensity = ReadScope(1);
-	slampIntensity.Append(" %");
-	UpdateData(true);
+	temp = ReadScope(1);
+// 0 – intensity level less than 12%
+//1 – intensity level 12 to 24%
+//2 – intensity level 25 to 49%
+//3 – intensity level 50 to 99%
+//4 – intensity level of 100%
+	
+	if ( temp.Compare("0")==0 ){//
+		slampIntensity="<12%";
+	}else if (temp.Compare("1")==0 ) {
+		slampIntensity="12-24%";
+	}else if (temp.Compare("2")==0 ) { 
+		slampIntensity="25-49%";
+	}else if (temp.Compare("3")==0 ) { 
+		slampIntensity="55-99%";
+	}else if (temp.Compare("4")==0 ) {
+		slampIntensity="100%";
+	}else{
+		slampIntensity="Cannot Find...";
+	}
+
+
+
+	UpdateData(false);
 	
 	//temp.Format(_T("2MOV F,%d\r\n"), old_position - 10000 );
 
