@@ -16,6 +16,8 @@ COctopusXCite::COctopusXCite(CWnd* pParent)
 	Scope_initialized = false;
 	old_position      = 0;
 
+	lampIntensity = 0;
+
 	if( Create(COctopusXCite::IDD, pParent) ) 
 		ShowWindow( SW_SHOW );
 
@@ -83,11 +85,17 @@ bool COctopusXCite::Init( void )
 	{
 		Scope_initialized = true;
 
-		//get rid of garbage in channel
-		WriteScope("1UNIT?\r\n"); //anyone out there?	
+		//connect to the PC -- enables control of the unit
+		WriteScope("tt\r\n"); 
+
 		Sleep(30);
-		while ( ReadScope(1) != "\0" ) 
+		while ( ReadScope(1) != "\r" ) 
 			{ ; } //clear the buffer
+
+
+
+		GetIntensityLevel();
+
 
 		WriteScope("1UNIT?\r\n"); //anyone out there?
 		Sleep(30);
@@ -179,6 +187,9 @@ void COctopusXCite::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX,	IDC_SCOPE_POS,				        m_Pos);
 	DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER,		    m_Slider);
 	DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER_SETTING, m_Slider_Setting);
+
+    DDX_Text( pDX, IDC_DOUT1 , slampIntensity);
+
 }  
 
 BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
@@ -212,7 +223,6 @@ BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
 	ON_BN_CLICKED(IDC_SCOPE_PATH,        ToggleXCiteLEDStatus)
 	ON_WM_TIMER()
 	ON_STN_CLICKED(IDC_SCOPE_INTENSITY_SLIDER_SETTING, &COctopusXCite::OnStnClickedScopeIntensitySliderSetting)
-	ON_EN_CHANGE(IDC_EDIT1, &COctopusXCite::OnEnChangeEdit1)
 	ON_STN_CLICKED(IDC_SCOPE_POS, &COctopusXCite::OnStnClickedScopePos)
 	ON_STN_CLICKED(IDC_XCITE_ONOFF, &COctopusXCite::OnStnClickedXciteOnoff)
 	ON_STN_CLICKED(IDC_SHUTTER_IMAGE, &COctopusXCite::OnStnClickedShutterImage)
@@ -225,12 +235,12 @@ SHUTDOWN
 
 void COctopusXCite::Close() 
 {  
-	
-	WriteScope(_T("1LOG OUT\r\n"));
+	//Disconnect PC, disconnects all control from the PC for the X-Cite exacte.
+	WriteScope(_T("xx\r\n"));
 	Sleep(30);
 
-	WriteScope(_T("2LOG OUT\r\n"));
-	Sleep(30);
+////	WriteScope(_T("2LOG OUT\r\n"));
+////	Sleep(30);
 
 	Scope_initialized = false;
 
@@ -730,4 +740,32 @@ void COctopusXCite::OnNMCustomdrawXciteIntensitySlider2(NMHDR *pNMHDR, LRESULT *
 	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
 	// TODO: Add your control notification handler code here
 	*pResult = 0;
+}
+
+
+
+void COctopusXCite::GetIntensityLevel()
+{
+		CString temp;
+			CString response;
+
+ 
+    working = true;
+
+	WriteScope(_T("ii\r\n"));
+	Sleep(30);
+		while ( ReadScope( 1 ) == "\r" ) { ; } //find the number
+ 
+	slampIntensity = ReadScope(1);
+	slampIntensity.Append(" %");
+	UpdateData(true);
+	
+	//temp.Format(_T("2MOV F,%d\r\n"), old_position - 10000 );
+
+	//WriteScope( temp );
+	//Sleep(30);
+	//WriteScope(_T("2JOG ON\r\n"));
+	//Sleep(30);
+	working = false;
+
 }

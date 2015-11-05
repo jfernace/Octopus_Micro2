@@ -54,12 +54,13 @@ BEGIN_MESSAGE_MAP(COctopusView, CFormView)
 	ON_BN_CLICKED(IDC_STATUS_OPEN_LED,     OnOpenLED)
 	ON_BN_CLICKED(IDC_STATUS_OPEN_PIEZO,   OnOpenPiezo)
 	//ON_BN_CLICKED(IDC_STATUS_OPEN_GRAT,    OnOpenGrating)
-	ON_BN_CLICKED(IDC_STATUS_OPEN_LASERS,  OnOpenLasers)
+	//ON_BN_CLICKED(IDC_STATUS_OPEN_LASERS,  OnOpenLasers)
 	ON_BN_CLICKED(IDC_STATUS_OPEN_SCOPE,   OnOpenScope)
 	ON_BN_CLICKED(IDC_STATUS_OPEN_STAGE,   OnOpenStage545)
 	//ON_BN_CLICKED(IDC_STATUS_OPEN_POL,	   OnOpenPolarizer)
+		ON_BN_CLICKED(IDC_STATUS_OPEN_XCITE, OnOpenXCite)
 	ON_BN_CLICKED(IDC_STATUS_OPEN_FOCUS, &COctopusView::OnBnClickedStatusOpenFocus)
-	ON_BN_CLICKED(IDC_STATUS_OPEN_XCITE, &COctopusView::OnBnClickedStatusOpenXcite)
+
 END_MESSAGE_MAP()
 
 void COctopusView::DoDataExchange(CDataExchange* pDX)
@@ -96,6 +97,8 @@ void COctopusView::OnInitialUpdate()
 		GetDlgItem( IDC_STATUS_OPEN_LASERS )->ShowWindow(   false );
 		GetDlgItem( IDC_STATUS_OPEN_WHEEL )->EnableWindow( true );
 		GetDlgItem( IDC_STATUS_OPEN_WHEEL )->ShowWindow(   true );
+		GetDlgItem( IDC_STATUS_OPEN_XCITE )->EnableWindow( true );
+		GetDlgItem( IDC_STATUS_OPEN_XCITE )->ShowWindow(   true );
 	}
 	else if ( scope == 3 ) //Pol scope
 	{
@@ -208,6 +211,13 @@ COctopusView::~COctopusView()
 		glob_m_pScope->DestroyWindow();
 		delete glob_m_pScope;
 		glob_m_pScope = NULL;
+	}
+
+		if( glob_m_pXCite != NULL ) 
+	{
+		glob_m_pXCite->DestroyWindow();
+		delete glob_m_pXCite;
+		glob_m_pXCite = NULL;
 	}
 }
 
@@ -573,7 +583,7 @@ void COctopusView::OnBnClickedStatusOpenFocus()
 }
 
 
-void COctopusView::OnBnClickedStatusOpenXcite()
+void COctopusView::OnOpenXCite(void)
 {
 
 	
@@ -604,4 +614,3 @@ void COctopusView::OnBnClickedStatusOpenXcite()
 	
 }
 
-}

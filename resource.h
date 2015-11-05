@@ -414,6 +414,7 @@
 #define IDC_MANUAL_INTENSITY            8041
 #define IDC_XCITE_ONOFF                 8042
 #define IDC_SHUTTER_IMAGE               8043
+#define IDC_CURRENT_INTENSITY           8044
 
 // Next default values for new objects
 // 
@@ -421,7 +422,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        115
 #define _APS_NEXT_COMMAND_VALUE         40016
-#define _APS_NEXT_CONTROL_VALUE         8044
+#define _APS_NEXT_CONTROL_VALUE         8045
 #define _APS_NEXT_SYMED_VALUE           108
 #endif
 #endif

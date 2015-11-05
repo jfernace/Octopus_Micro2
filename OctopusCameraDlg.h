@@ -182,6 +182,7 @@ public:
 	afx_msg void OnStnClickedStaticGain2();
 	afx_msg void OnEnChangeCasPicturesPerFile();
 	afx_msg void OnEnChangeCasTempTarget();
+	afx_msg void OnStnClickedCasTempCurrent();
 };
 
 #endif

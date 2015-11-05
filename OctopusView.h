@@ -29,7 +29,7 @@ protected:
 	afx_msg void OnOpenStage545();
 	afx_msg void OnOpenStage686();
 	afx_msg void OnOpenPiezo();
-	afx_msg void OnOpenLasers();
+	afx_msg void OnOpenXCite();
 	//afx_msg void OnOpenGrating();
 	//afx_msg void OnOpenPolarizer();
 	afx_msg void OnOpenScope();

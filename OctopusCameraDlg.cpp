@@ -208,6 +208,7 @@ BEGIN_MESSAGE_MAP(COctopusCamera, CDialog)
 	ON_BN_CLICKED(IDC_NOFOCUS, &COctopusCamera::OnBnClickedGeneralFocus)
 	ON_EN_CHANGE(IDC_FOCUS_EDIT, &COctopusCamera::OnEnChangeFocusEdit)
 	ON_EN_CHANGE(IDC_CAS_PICTURES_PER_FILE, &COctopusCamera::OnEnChangeCasPicturesPerFile)
+	ON_STN_CLICKED(IDC_CAS_TEMP_CURRENT, &COctopusCamera::OnStnClickedCasTempCurrent)
 END_MESSAGE_MAP()
 
 BOOL COctopusCamera::OnInitDialog() 
@@ -1311,4 +1312,10 @@ void COctopusCamera::OnEnChangeCasPicturesPerFile()
 	// with the ENM_CHANGE flag ORed into the mask.
 
 	// TODO:  Add your control notification handler code here
+}
+
+
+void COctopusCamera::OnStnClickedCasTempCurrent()
+{
+	// TODO: Add your control notification handler code here
 }

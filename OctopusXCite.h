@@ -26,6 +26,10 @@ public:
 	void Close( void );
 	void EpiFilterWheel( int cube );
 	void BrightFieldFilterWheel( int filter );
+	void GetIntensityLevel(void);
+	int lampIntensity;
+
+	CString slampIntensity;//create a stringstream
 
 protected:
 
@@ -52,7 +56,7 @@ protected:
 	int m_Radio_OBJ;
 	int m_Radio_FW;
 	int m_Radio_BFW;
-
+	
 	bool working;
 	double position_now;
   	u16 stepsize_10nm;
