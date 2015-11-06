@@ -418,6 +418,7 @@
 #define IDC_ADJUST_INTENSITY            8047
 #define IDC_INTENSITY_SLIDER            8048
 #define IDC_LED_ONOFF                   8049
+#define IDC_LED_TEMPERATURE             8050
 
 // Next default values for new objects
 // 
@@ -425,7 +426,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        115
 #define _APS_NEXT_COMMAND_VALUE         40016
-#define _APS_NEXT_CONTROL_VALUE         8050
+#define _APS_NEXT_CONTROL_VALUE         8051
 #define _APS_NEXT_SYMED_VALUE           108
 #endif
 #endif

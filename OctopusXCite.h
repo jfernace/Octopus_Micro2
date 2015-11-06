@@ -29,11 +29,11 @@ public:
 	void BrightFieldFilterWheel( int filter );
 	void GetIntensityLevel(void);
 	void GetLEDStatus(void);
-
+	void getTemperature(void);
 	int lampIntensity;
 
 	CString slampIntensity;//create a stringstream
-
+	CString sLEDTemperature;
 protected:
 
 	bool   Scope_initialized;
@@ -134,6 +134,7 @@ public:
 	CSliderCtrl m_islider;
 	//afx_msg void OnBnClickedScopePath();
 	afx_msg void OnBnClickedLedOnoff();
+	afx_msg void OnStnClickedLedTemperature();
 };
 
 #endif

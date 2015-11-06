@@ -105,83 +105,16 @@ bool COctopusXCite::Init( void )
 
 		WriteScope("jj\r");//we want to be able to use the advanced commands
 		Sleep(30);
+		
+		WriteScope("cc\r");//we want to be able to use the advanced commands
+		Sleep(30);
 
 		GetIntensityLevel();
 		GetLEDStatus();
-
-
-		//	WriteScope("1UNIT?\r\n"); //anyone out there?
-		//	Sleep(30);
-		//	while ( ReadScope(1) != "\0" ) 
-		//		{ ; } //clear the buffer
-		//	
-		//	WriteScope("1UNIT?\r\n"); //anyone out there?
-		//	Sleep(30);
-
-		//	if ( ReadScope(9).Find("1UNIT IX2") >=0 ) 
-		//	{
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("1LOG IN\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2LOG IN\r\n"));
-		//		Sleep(30);
-
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("1SW ON\r\n"));
-		//		Sleep(30);
-
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("1SNDOB ON\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2maxspd 70000,300000,250\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2JOG ON\r\n"));
-		//		Sleep(30);
-
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2NEARLMT 3000000\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2FARLMT 100\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope("2JOGSNS 7\r\n"); //something like 100 microns per turn
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-		//		WriteScope(_T("2joglmt ON\r\n"));
-		//		Sleep(30);
-		//		
-		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-
-		//		Sleep(100);
-
-		//		int ob  = GetObj();
-		//		int fw  = GetFW();
-		//		int bfw = GetBFW();
-
-		//		m_Radio_OBJ  = ob  - 1; 
-		//		m_Radio_FW   = fw  - 1; 
-		//		m_Radio_BFW  = bfw - 1; 
-
-		//		UpdateData( false );
+		getTemperature();
 
 		return true;
-		//	} 
-		//	else 
-		//	{
-		//		Close();
-		//		return false;
-		//	}
+
 	}
 	else 
 	{
@@ -202,10 +135,9 @@ void COctopusXCite::DoDataExchange(CDataExchange* pDX)
 	//DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER_SETTING, m_Slider_Setting);
 
 	DDX_Text( pDX, IDC_DOUT1 , slampIntensity);
-	DDX_Text(pDX, IDC_DOUT1 , slampIntensity);
+	DDX_Text( pDX, IDC_LED_TEMPERATURE , sLEDTemperature);
 
-
-	DDX_Control(pDX, IDC_MANUAL_ADJUST_EDIT, m_lampIntensity);
+	//DDX_Control(pDX, IDC_MANUAL_ADJUST_EDIT, m_lampIntensity);
 
 	DDX_Text(pDX, IDC_MANUAL_ADJUST_EDIT, m_LEDIntensity);
 	DDV_MinMaxInt(pDX, m_LEDIntensity, 0, 100);
@@ -255,6 +187,7 @@ BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
 	ON_BN_CLICKED(IDC_ADJUST_INTENSITY, &COctopusXCite::OnBnClickedAdjustIntensity)
 	//ON_BN_CLICKED(IDC_SCOPE_PATH, &COctopusXCite::OnBnClickedScopePath)
 	ON_BN_CLICKED(IDC_LED_ONOFF, &COctopusXCite::OnBnClickedLedOnoff)
+	ON_STN_CLICKED(IDC_LED_TEMPERATURE, &COctopusXCite::OnStnClickedLedTemperature)
 END_MESSAGE_MAP()
 
 /**************************************************************************************
@@ -270,7 +203,7 @@ void COctopusXCite::Close()
 			WriteScope(_T("ss\r\n"));
 	Sleep(30);
 
-			WriteScope(_T("xx\r\n"));
+			WriteScope(_T("yy\r\n"));
 	Sleep(30);
 //Disconnect PC, disconnects all control from the PC for the X-Cite exacte.
 	WriteScope(_T("xx\r\n"));
@@ -787,13 +720,13 @@ void COctopusXCite::GetIntensityLevel()
 	str = "dd\r\n";
 	WriteScope(_T(str));//command to ask camera for lamp intensity
 	Sleep(30);
-	temp = ReadScope(4);
+	temp = ReadScope(16);
 
 
 	slampIntensity=temp;
 	slampIntensity.Append("%");
 	slampIntensity.Replace("\r","");
-
+	m_LEDIntensity = atoi(slampIntensity);
 	UpdateData(false);
 	working = false;
 
@@ -876,8 +809,7 @@ void COctopusXCite::OnBnClickedLedOnoff()
 		// TODO: Add your control notification handler code here
 	CString temp;
 	CString str;
-	char *b;
-	char *dbc;
+
 	working = true;
 
 	if (IS_LED_ON){
@@ -912,7 +844,35 @@ void COctopusXCite::OnBnClickedLedOnoff()
 
 	
 	}
-
+	getTemperature();
 	UpdateData(true);
 	working = false;
+}
+
+void COctopusXCite::getTemperature()
+
+{
+	working = true;
+	CString temp;
+	CString str;
+
+		str="gt\r";  
+		WriteScope(_T(str));
+		Sleep(30);
+		temp = ReadScope(16);
+	
+	sLEDTemperature=temp;
+	
+	sLEDTemperature.Replace("\r","");
+	
+	sLEDTemperature.Replace(","," and ");
+
+	UpdateData(false);//update and refresh display
+	working = false;
+
+}
+
+void COctopusXCite::OnStnClickedLedTemperature()
+{
+	// TODO: Add your control notification handler code here
 }
