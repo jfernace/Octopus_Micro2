@@ -4,11 +4,13 @@
 #include "OctopusXCite.h"
 #include "OctopusGlobals.h"
 #include "cport.h"
-
+#include <bitset>
 extern COctopusGlobals B;
 
 COctopusXCite::COctopusXCite(CWnd* pParent)
 	: CDialog(COctopusXCite::IDD, pParent)
+	, m_LEDIntensity(0)
+	, m_IntensitySlider(0)
 {    
 	position_now      = 0;
 	stepsize_10nm     = 10;
@@ -17,6 +19,9 @@ COctopusXCite::COctopusXCite(CWnd* pParent)
 	old_position      = 0;
 	slampIntensity = "Starting...";
 	lampIntensity = 0;
+
+	VERIFY(m_bmp_on.LoadBitmap(IDB_ON));
+	VERIFY(m_bmp_off.LoadBitmap(IDB_OFF));
 
 	if( Create(COctopusXCite::IDD, pParent) ) 
 		ShowWindow( SW_SHOW );
@@ -31,6 +36,12 @@ COctopusXCite::COctopusXCite(CWnd* pParent)
 	B.XCite_loaded = true;
 
 	Init();
+
+
+	m_islider.SetRange(0, 100);
+	//m_islider.SetPos( (int) ND_value );
+	m_islider.SetTicFreq(10);
+
 }
 
 BOOL COctopusXCite::OnInitDialog() 
@@ -73,7 +84,7 @@ bool COctopusXCite::Init( void )
 	}
 
 	pPortScope = new CPort;
-	
+
 	if( pPortScope == NULL ) 
 	{
 		AfxMessageBox(_T("pPortScope is a Null pointer..."));
@@ -82,7 +93,7 @@ bool COctopusXCite::Init( void )
 
 	//right now LED lamp light source for Fl. imaging is on COM4 on USB3.0
 	pPortScope->mPort.Format(_T("COM4"));
-	
+
 	if( pPortScope->OpenCPort() )//open and setup the comm port
 	{
 		Scope_initialized = true;
@@ -91,86 +102,86 @@ bool COctopusXCite::Init( void )
 		WriteScope("tt\r\n"); 
 
 		Sleep(30);
-		while ( ReadScope(1) != "\r" ) 
-			{ ; } //clear the buffer
 
-
+		WriteScope("jj\r");//we want to be able to use the advanced commands
+		Sleep(30);
 
 		GetIntensityLevel();
+		GetLEDStatus();
 
 
-		WriteScope("1UNIT?\r\n"); //anyone out there?
-		Sleep(30);
-		while ( ReadScope(1) != "\0" ) 
-			{ ; } //clear the buffer
-		
-		WriteScope("1UNIT?\r\n"); //anyone out there?
-		Sleep(30);
+		//	WriteScope("1UNIT?\r\n"); //anyone out there?
+		//	Sleep(30);
+		//	while ( ReadScope(1) != "\0" ) 
+		//		{ ; } //clear the buffer
+		//	
+		//	WriteScope("1UNIT?\r\n"); //anyone out there?
+		//	Sleep(30);
 
-		if ( ReadScope(9).Find("1UNIT IX2") >=0 ) 
-		{
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("1LOG IN\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2LOG IN\r\n"));
-			Sleep(30);
+		//	if ( ReadScope(9).Find("1UNIT IX2") >=0 ) 
+		//	{
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("1LOG IN\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2LOG IN\r\n"));
+		//		Sleep(30);
 
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("1SW ON\r\n"));
-			Sleep(30);
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("1SW ON\r\n"));
+		//		Sleep(30);
 
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("1SNDOB ON\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2maxspd 70000,300000,250\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2JOG ON\r\n"));
-			Sleep(30);
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("1SNDOB ON\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2maxspd 70000,300000,250\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2JOG ON\r\n"));
+		//		Sleep(30);
 
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2NEARLMT 3000000\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2FARLMT 100\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope("2JOGSNS 7\r\n"); //something like 100 microns per turn
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
-			WriteScope(_T("2joglmt ON\r\n"));
-			Sleep(30);
-			
-			while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2NEARLMT 3000000\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2FARLMT 100\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope("2JOGSNS 7\r\n"); //something like 100 microns per turn
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
+		//		WriteScope(_T("2joglmt ON\r\n"));
+		//		Sleep(30);
+		//		
+		//		while ( ReadScope( 1 ) != "\0" ) { ; } //clear the buffer
 
-			Sleep(100);
+		//		Sleep(100);
 
-			int ob  = GetObj();
-			int fw  = GetFW();
-			int bfw = GetBFW();
+		//		int ob  = GetObj();
+		//		int fw  = GetFW();
+		//		int bfw = GetBFW();
 
-			m_Radio_OBJ  = ob  - 1; 
-			m_Radio_FW   = fw  - 1; 
-			m_Radio_BFW  = bfw - 1; 
+		//		m_Radio_OBJ  = ob  - 1; 
+		//		m_Radio_FW   = fw  - 1; 
+		//		m_Radio_BFW  = bfw - 1; 
 
-			UpdateData( false );
+		//		UpdateData( false );
 
-			return true;
-		} 
-		else 
-		{
-			Close();
-			return false;
-		}
+		return true;
+		//	} 
+		//	else 
+		//	{
+		//		Close();
+		//		return false;
+		//	}
 	}
 	else 
 	{
@@ -190,8 +201,17 @@ void COctopusXCite::DoDataExchange(CDataExchange* pDX)
 	//DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER,		    m_Slider);
 	//DDX_Control(pDX,	IDC_SCOPE_INTENSITY_SLIDER_SETTING, m_Slider_Setting);
 
-    DDX_Text( pDX, IDC_DOUT1 , slampIntensity);
+	DDX_Text( pDX, IDC_DOUT1 , slampIntensity);
+	DDX_Text(pDX, IDC_DOUT1 , slampIntensity);
 
+
+	DDX_Control(pDX, IDC_MANUAL_ADJUST_EDIT, m_lampIntensity);
+
+	DDX_Text(pDX, IDC_MANUAL_ADJUST_EDIT, m_LEDIntensity);
+	DDV_MinMaxInt(pDX, m_LEDIntensity, 0, 100);
+	DDX_Slider(pDX, IDC_INTENSITY_SLIDER, m_IntensitySlider);
+	DDX_Control(pDX, IDC_INTENSITY_SLIDER, m_islider);
+	DDX_Control(pDX,  IDC_XCITE_ONOFF, m_status_LED);
 }  
 
 BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
@@ -229,6 +249,12 @@ BEGIN_MESSAGE_MAP(COctopusXCite, CDialog)
 	//ON_STN_CLICKED(IDC_XCITE_ONOFF, &COctopusXCite::OnStnClickedXciteOnoff)
 	//ON_STN_CLICKED(IDC_SHUTTER_IMAGE, &COctopusXCite::OnStnClickedShutterImage)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_XCITE_INTENSITY_SLIDER2, &COctopusXCite::OnNMCustomdrawXciteIntensitySlider2)
+	//	ON_EN_CHANGE(IDC_MANUAL_INTENSITY, &COctopusXCite::OnEnChangeManualIntensity)
+	//	ON_EN_CHANGE(IDC_MG17LOGGERCTRL1, &COctopusXCite::OnEnChangeMg17loggerctrl1)
+	//	ON_EN_CHANGE(IDC_MANUAL_ADJUST_EDIT, &COctopusXCite::OnEnChangeManualAdjustEdit)
+	ON_BN_CLICKED(IDC_ADJUST_INTENSITY, &COctopusXCite::OnBnClickedAdjustIntensity)
+	//ON_BN_CLICKED(IDC_SCOPE_PATH, &COctopusXCite::OnBnClickedScopePath)
+	ON_BN_CLICKED(IDC_LED_ONOFF, &COctopusXCite::OnBnClickedLedOnoff)
 END_MESSAGE_MAP()
 
 /**************************************************************************************
@@ -237,12 +263,24 @@ SHUTDOWN
 
 void COctopusXCite::Close() 
 {  
-	//Disconnect PC, disconnects all control from the PC for the X-Cite exacte.
+	//turn off lamp 
+			WriteScope(_T("zz\r\n"));
+	Sleep(30);
+
+			WriteScope(_T("ss\r\n"));
+	Sleep(30);
+
+			WriteScope(_T("xx\r\n"));
+	Sleep(30);
+//Disconnect PC, disconnects all control from the PC for the X-Cite exacte.
 	WriteScope(_T("xx\r\n"));
 	Sleep(30);
 
-////	WriteScope(_T("2LOG OUT\r\n"));
-////	Sleep(30);
+
+
+
+	////	WriteScope(_T("2LOG OUT\r\n"));
+	////	Sleep(30);
 
 	Scope_initialized = false;
 
@@ -251,7 +289,7 @@ void COctopusXCite::Close()
 		delete pPortScope;
 		pPortScope = NULL;
 	}
-	
+
 }
 
 COctopusXCite::~COctopusXCite() 
@@ -276,7 +314,7 @@ void COctopusXCite::Z_StepDown( void )
 }
 void COctopusXCite::Z_StepUp( void ) 
 { 
-    working = true;
+	working = true;
 	CString temp;
 	temp.Format(_T("2MOV N,%d\r\n"), stepsize_10nm );
 	WriteScope( temp );	
@@ -334,10 +372,10 @@ void COctopusXCite::GetPosition( void )
 		return;
 
 	while ( ReadScope( 1 ) != "\0" ) 
-		{ ; } //clear the buffer
+	{ ; } //clear the buffer
 
 	WriteScope("2POS?\r\n");
-	
+
 	Sleep(50);
 
 	if ( ReadScope(5).Find("2POS ") >= 0 ) 
@@ -352,7 +390,7 @@ void COctopusXCite::GetPosition( void )
 	else 
 	{
 		while ( ReadScope( 1 ) != "\0" ) 
-			{ ; } //clear the buffer
+		{ ; } //clear the buffer
 	}
 }
 
@@ -395,9 +433,9 @@ void COctopusXCite::OnBFW_6() { m_Radio_BFW = 5; BrightFieldFilterWheel( 6 ); Up
 void COctopusXCite::Objective( int obj )
 {
 	KillTimer( TIMER_SCOPE );
-		
+
 	GetPosition();
-	
+
 	int old_obj = GetObj();
 
 
@@ -414,10 +452,10 @@ void COctopusXCite::Objective( int obj )
 	//5x is too high relative to standard ref frame
 	if ( old_obj == 3 ) 
 		old_position = old_position - 81380;
-	
+
 	//now we are in stanrd frame
 	//add the correct offsets back
-		
+
 	//to pos 1 (10 x)
 	//10x needs to be lowered relative to standard ref frame
 	if ( obj == 1 ) 
@@ -429,12 +467,12 @@ void COctopusXCite::Objective( int obj )
 		old_position = old_position + 81380;
 
 	while ( ReadScope( 1 ) != "\0" ) 
-		{ ; } //clear the buffer
+	{ ; } //clear the buffer
 
 	//move to the bottom
 	CString temp;
 	temp.Format("2MOV d,%d\r\n", 10000 );
-	
+
 	//temp.Format("2MOV F,%d\r\n", old_position - 10000 );
 	WriteScope( temp );
 
@@ -453,12 +491,12 @@ void COctopusXCite::Objective( int obj )
 	{
 		temp.Format(_T("1OB %d\r\n"), obj);
 		WriteScope( temp );
-		
+
 		while ( ReadScope( 5 ).Find(_T("1OB +")) == 0 )
 		{
 			Sleep( 500 );
 		}
-		
+
 		while ( GetObj() != obj )
 		{
 			Sleep( 500 );
@@ -469,7 +507,7 @@ void COctopusXCite::Objective( int obj )
 		Sleep(100);
 	}
 
-    SetTimer( TIMER_SCOPE, 250, NULL );
+	SetTimer( TIMER_SCOPE, 250, NULL );
 }
 
 int COctopusXCite::GetObj( void )
@@ -480,10 +518,10 @@ int COctopusXCite::GetObj( void )
 		return 0;
 
 	while ( ReadScope(1) != "\0" ) 
-		{ ; } //clear the buffer
+	{ ; } //clear the buffer
 
 	WriteScope("1OB?\r\n");
-	
+
 	Sleep(100);
 
 	if ( ReadScope(4).Find("1OB ") >= 0 ) 
@@ -493,7 +531,7 @@ int COctopusXCite::GetObj( void )
 	else 
 	{
 		while ( ReadScope(1) != "\0" ) 
-			{ ; } //clear the buffer
+		{ ; } //clear the buffer
 	}
 	return 0;
 }
@@ -506,10 +544,10 @@ int COctopusXCite::GetFW( void )
 		return 0;
 
 	while ( ReadScope( 1 ) != "\0" ) 
-		{ ; } //clear the buffer
+	{ ; } //clear the buffer
 
 	WriteScope("1MU?\r\n");
-	
+
 	Sleep(30);
 
 	if ( ReadScope( 4 ).Find("1MU ") >= 0 ) 
@@ -519,7 +557,7 @@ int COctopusXCite::GetFW( void )
 	else 
 	{
 		while ( ReadScope( 1 ) != "\0" ) 
-			{ ; } //clear the buffer
+		{ ; } //clear the buffer
 	}
 	return 0;
 }
@@ -532,10 +570,10 @@ int COctopusXCite::GetBFW( void )
 		return 0;
 
 	while ( ReadScope( 1 ) != "\0" ) 
-		{ ; } //clear the buffer
+	{ ; } //clear the buffer
 
 	WriteScope("1CD?\r\n");
-	
+
 	Sleep(30);
 
 	if ( ReadScope( 4 ).Find("1CD ") >= 0 ) 
@@ -545,7 +583,7 @@ int COctopusXCite::GetBFW( void )
 	else 
 	{
 		while ( ReadScope( 1 ) != "\0" ) 
-			{ ; } //clear the buffer
+		{ ; } //clear the buffer
 	}
 	return 0;
 }
@@ -553,27 +591,27 @@ int COctopusXCite::GetBFW( void )
 void COctopusXCite::EpiFilterWheel( int cube )
 {
 	KillTimer( TIMER_SCOPE );
-		
+
 	CString temp;
 	temp.Format("1MU %d\r\n", cube );
 	WriteScope( temp );
 
 	m_Radio_FW = cube - 1; UpdateData( false );
 
-    SetTimer( TIMER_SCOPE, 250, NULL );
+	SetTimer( TIMER_SCOPE, 250, NULL );
 }
 
 void COctopusXCite::BrightFieldFilterWheel( int filter )
 {
 	KillTimer( TIMER_SCOPE );
-		
+
 	CString temp;
 	temp.Format("1CD %d\r\n", filter );
 	WriteScope( temp );
 
 	m_Radio_BFW = filter - 1; UpdateData( false );
 
-    SetTimer( TIMER_SCOPE, 250, NULL );
+	SetTimer( TIMER_SCOPE, 250, NULL );
 }
 
 
@@ -620,12 +658,12 @@ void COctopusXCite::BrightField( int volt )
 void COctopusXCite::OnNMCustomdrawExecute( NMHDR *pNMHDR, LRESULT *pResult )
 {
 	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
-	
+
 	int CurPos = m_Slider.GetPos();
-	
+
 	if ( CurPos >  60 ) CurPos =  60;
 	if ( CurPos <   0 ) CurPos =   0;
-	
+
 	BrightField( CurPos );
 
 	*pResult = 0;	
@@ -654,7 +692,7 @@ bool COctopusXCite::WriteScope( CString str )
 		sprintf(pPortScope->mOutBuf, _T("%s"), str.GetBuffer());
 
 		str.ReleaseBuffer();
-		
+
 		if( pPortScope->WriteCPort() ) 
 		{
 			while( pPortScope->mResWrite != true ) 
@@ -664,7 +702,7 @@ bool COctopusXCite::WriteScope( CString str )
 		}
 		else//an error occurred during the write
 			return false;
-        
+
 		return true;//the write was successful
 	}
 	else//the scope was not first initialized
@@ -673,10 +711,10 @@ bool COctopusXCite::WriteScope( CString str )
 
 CString COctopusXCite::ReadScope( u16 CharsToRead )
 {
-	
+
 	if( pPortScope == NULL ) 
 		return "Error";
-	
+
 	pPortScope->mBytesToRead = CharsToRead;
 
 	if( pPortScope->ReadCPort() )//issue the comm port read command
@@ -698,7 +736,7 @@ BOOL COctopusXCite::OnCommand(WPARAM wParam, LPARAM lParam)
 	int id = LOWORD(wParam);     // Notification code
 	if( id == 2 ) return FALSE;  // Trap ESC key
 	if( id == 1 ) return FALSE;  // Trap RTN key
-    return CDialog::OnCommand(wParam, lParam);
+	return CDialog::OnCommand(wParam, lParam);
 }
 
 
@@ -725,11 +763,6 @@ void COctopusXCite::OnStnClickedScopePos()
 }
 
 
-void COctopusXCite::OnStnClickedXciteOnoff()
-{
-	// TODO: Add your control notification handler code here
-}
-
 
 void COctopusXCite::OnStnClickedShutterImage()
 {
@@ -748,43 +781,138 @@ void COctopusXCite::OnNMCustomdrawXciteIntensitySlider2(NMHDR *pNMHDR, LRESULT *
 
 void COctopusXCite::GetIntensityLevel()
 {
-		CString temp;
-
-    working = true;
-
-	WriteScope(_T("ii\r\n"));//command to ask camera for lamp intensity
+	CString temp;
+	CString str;
+	working = true;
+	str = "dd\r\n";
+	WriteScope(_T(str));//command to ask camera for lamp intensity
 	Sleep(30);
-	temp = ReadScope(1);
-// 0 – intensity level less than 12%
-//1 – intensity level 12 to 24%
-//2 – intensity level 25 to 49%
-//3 – intensity level 50 to 99%
-//4 – intensity level of 100%
-	
-	if ( temp.Compare("0")==0 ){//
-		slampIntensity="<12%";
-	}else if (temp.Compare("1")==0 ) {
-		slampIntensity="12-24%";
-	}else if (temp.Compare("2")==0 ) { 
-		slampIntensity="25-49%";
-	}else if (temp.Compare("3")==0 ) { 
-		slampIntensity="55-99%";
-	}else if (temp.Compare("4")==0 ) {
-		slampIntensity="100%";
-	}else{
-		slampIntensity="Cannot Find...";
-	}
+	temp = ReadScope(4);
 
 
+	slampIntensity=temp;
+	slampIntensity.Append("%");
+	slampIntensity.Replace("\r","");
 
 	UpdateData(false);
-	
-	//temp.Format(_T("2MOV F,%d\r\n"), old_position - 10000 );
-
-	//WriteScope( temp );
-	//Sleep(30);
-	//WriteScope(_T("2JOG ON\r\n"));
-	//Sleep(30);
 	working = false;
 
+}
+
+
+
+
+
+
+
+
+void COctopusXCite::OnBnClickedAdjustIntensity()
+{
+	CString str;
+	CString temp;
+	working = true;
+	UpdateData(true);
+	// get value from text box and update the LED to reflect
+	//if (m_LEDIntensity > 4 ){
+	//	m_LEDIntensity=4;
+
+	//}else if( m_LEDIntensity < 0){
+	//	m_LEDIntensity=0;
+	//}
+	str.Format("i%i\r", m_LEDIntensity); 
+
+	temp = ReadScope(1);
+	str.Format("d%03i\r", m_LEDIntensity); 
+	WriteScope(_T(str));//command to ask camera for lamp intensity
+	Sleep(30);
+	temp = ReadScope(1);
+	GetIntensityLevel();
+	working = false;
+}
+
+
+void COctopusXCite::GetLEDStatus()
+
+{
+	//xxx\r” where xxx is the status of the unit. The number returned is bitwise and is decoded as follows:
+	//Bit 15 – Iris Moving: 1 = Iris movement complete, 0 = Iris Moving.
+	//bit 14 – CLF Engaged
+	//bit 10 – Light guide inserted
+	//bit 8 – X-Cite exacte communication mode.
+	//Bit 7 – Power or Intensity Mode : 1 = Power mode, 0 = Intensity Mode
+	//bit 5 - Lock Bit: 1 = front panel locked, 0 = front panel unlocked;
+	//bit 4 - Lamp Ready Bit: 1 = lamp is ready, 0 = lamp is not ready;
+	//bit 3 - Home Bit: 1 = fault, 0 = pass;
+	//bit 2 - Shutter Bit: 1 = shutter is opened, 0 = shutter is closed;
+	//bit 1 - Lamp Bit: 1 = lamp is ON, 0 = lamp is OFF;
+	//bit 0 - Alarm Bit: 1 = alarm is ON, 0 = alarm is OFF.
+	//Note: The 110LED and 120LED will respond to CLF commands and Calibration commands, however since these features are not enabled on these products, the responses are simulated for compatibility purposes only.
+
+
+	///note to self -- they call the "shutter" turning the LED power on (ie the lamp xcite unit has to manually switched on, then according to the software the "lamp Bit" is on
+	CString str;
+	CString temp;
+	int xxx;
+	working = true;
+
+	str="uu\r";  
+	WriteScope(_T(str));//command to ask camera for lamp intensity
+	Sleep(30);
+	temp = ReadScope(16);
+	std::string binary = std::bitset<16>(atoi(temp)).to_string(); //to binary
+	IS_LED_ON =  (atoi(temp) & 4)!=0;
+
+	if (IS_LED_ON) m_status_LED.SetBitmap( m_bmp_on );
+
+	UpdateData(true);
+	working = false;
+
+}
+
+
+
+void COctopusXCite::OnBnClickedLedOnoff()
+{
+		// TODO: Add your control notification handler code here
+	CString temp;
+	CString str;
+	char *b;
+	char *dbc;
+	working = true;
+
+	if (IS_LED_ON){
+		//turn it off
+		str = "zz\r\n";
+
+		WriteScope(_T(str));//command to ask camera for lamp intensity
+		Sleep(30);
+
+		str="uu\r";  
+		WriteScope(_T(str));//command to ask camera for lamp intensity
+		Sleep(30);
+		temp = ReadScope(16);
+		IS_LED_ON =   (atoi(temp) & 4)!=0;
+
+		m_status_LED.SetBitmap( m_bmp_off );
+
+	}else {
+		//turn it ON
+		str = "mm\r\n";
+
+		WriteScope(_T(str));
+		Sleep(30);
+
+		str="uu\r";  
+		WriteScope(_T(str));
+		Sleep(30);
+		temp = ReadScope(16);
+	
+		IS_LED_ON = (atoi(temp) & 4)!=0;
+		m_status_LED.SetBitmap( m_bmp_on );
+
+	
+	}
+
+	UpdateData(true);
+	working = false;
 }

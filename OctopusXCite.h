@@ -9,6 +9,7 @@
 #include "afxwin.h"
 #include <process.h>
 #include "cport.h"
+#include "afxcmn.h"
 
 class COctopusXCite : public CDialog
 {
@@ -27,6 +28,8 @@ public:
 	void EpiFilterWheel( int cube );
 	void BrightFieldFilterWheel( int filter );
 	void GetIntensityLevel(void);
+	void GetLEDStatus(void);
+
 	int lampIntensity;
 
 	CString slampIntensity;//create a stringstream
@@ -49,7 +52,7 @@ protected:
 	CString ReadScope( u16 CharsToRead );
 
 	bool Init( void );
-
+	bool IS_LED_ON;
 	CStatic m_Pos;
 
 	int	m_Radio_S;
@@ -73,7 +76,9 @@ protected:
 	CStatic     m_Slider_Setting;
 	CSliderCtrl m_Slider;
 	CString     m_Slider_Setting_String;
-
+	CBitmap     m_bmp_on;
+	CBitmap     m_bmp_off;
+	CStatic      m_status_LED;
 	bool first_tick;
 
 public:
@@ -119,6 +124,16 @@ public:
 	afx_msg void OnStnClickedXciteOnoff();
 	afx_msg void OnStnClickedShutterImage();
 	afx_msg void OnNMCustomdrawXciteIntensitySlider2(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnEnChangeManualIntensity();
+	afx_msg void OnEnChangeMg17loggerctrl1();
+	afx_msg void OnEnChangeManualAdjustEdit();
+	afx_msg void OnBnClickedAdjustIntensity();
+	CEdit m_lampIntensity;
+	int m_LEDIntensity;
+	int m_IntensitySlider;
+	CSliderCtrl m_islider;
+	//afx_msg void OnBnClickedScopePath();
+	afx_msg void OnBnClickedLedOnoff();
 };
 
 #endif

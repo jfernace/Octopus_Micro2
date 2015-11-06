@@ -189,6 +189,7 @@
 #define IDC_MGSHUTTERCTRL3              1084
 #define IDC_MGSHUTTERCTRL4              1085
 #define IDC_MG17LOGGERCTRL1             1086
+#define IDC_MANUAL_ADJUST_EDIT          1086
 #define IDC_MG17SYSTEMCTRL1             1087
 #define IDC_CAMERA                      1600
 #define IDC_CAS_DISP                    1601
@@ -414,7 +415,9 @@
 #define IDC_MANUAL_INTENSITY            8041
 #define IDC_XCITE_ONOFF                 8042
 #define IDC_SHUTTER_IMAGE               8043
-#define IDC_CURRENT_INTENSITY           8044
+#define IDC_ADJUST_INTENSITY            8047
+#define IDC_INTENSITY_SLIDER            8048
+#define IDC_LED_ONOFF                   8049
 
 // Next default values for new objects
 // 
@@ -422,7 +425,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        115
 #define _APS_NEXT_COMMAND_VALUE         40016
-#define _APS_NEXT_CONTROL_VALUE         8045
+#define _APS_NEXT_CONTROL_VALUE         8050
 #define _APS_NEXT_SYMED_VALUE           108
 #endif
 #endif
