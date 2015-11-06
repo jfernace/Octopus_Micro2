@@ -1,6 +1,4 @@
 Octopus.opensdf
-Debug/*
-Debug-old/*
 Debug/cl.command.1.tlog
 Debug/CL.read.1.tlog
 Debug/CL.write.1.tlog
@@ -55,3 +53,4 @@ Debug/OctopusView.obj
 Debug/OctopusXCite.obj
 Debug/vc100.pdb
 Octopus.sdf
+Octopus.suo
