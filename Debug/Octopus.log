@@ -1,15 +1,136 @@
-﻿Build started 11/5/2015 8:29:54 PM.
+﻿Build started 11/6/2015 9:29:05 AM.
      1>Project "C:\Users\microscope2\Documents\Octopus\Octopus_Micro2\Octopus.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\Octopus.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files\GnuWin32\include" /I"C:\Documents and Settings\Owner\Desktop\levmar-2.6" /I"C:\Program Files\Octopus\Octopus072413\LIB" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0710 /D _AFXDLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc100.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt OctopusXCite.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files\GnuWin32\include" /I"C:\Documents and Settings\Owner\Desktop\levmar-2.6" /I"C:\Program Files\Octopus\Octopus072413\LIB" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0710 /D _AFXDLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc100.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt DisplayDialog.cpp MainFrm.cpp Octopus.cpp OctopusCameraDisplay.cpp OctopusCameraDlg.cpp OctopusClock.cpp OctopusDoc.cpp OctopusFocus.cpp OctopusLaser.cpp OctopusLasers.cpp OctopusLog.cpp OctopusObjectivePiezo.cpp OctopusScope.cpp OctopusScript.cpp OctopusShutter.cpp OctopusStage545.cpp OctopusView.cpp OctopusXCite.cpp Octopus_LED.cpp
+         DisplayDialog.cpp
+         MainFrm.cpp
+         Octopus.cpp
+         OctopusCameraDisplay.cpp
+     1>OctopusCameraDisplay.cpp(202): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(202): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(203): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(203): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(204): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(204): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(205): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(205): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(206): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(206): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(211): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(211): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(212): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(212): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(213): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(213): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(214): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(214): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(215): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(215): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDisplay.cpp(319): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(321): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(489): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(502): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(532): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(635): warning C4018: '<' : signed/unsigned mismatch
+     1>OctopusCameraDisplay.cpp(645): warning C4244: '=' : conversion from 'double' to 'u16', possible loss of data
+     1>OctopusCameraDisplay.cpp(649): warning C4244: '=' : conversion from 'double' to 'u16', possible loss of data
+     1>OctopusCameraDisplay.cpp(651): warning C4244: '+=' : conversion from 'double' to 'u32', possible loss of data
+     1>OctopusCameraDisplay.cpp(806): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>OctopusCameraDisplay.cpp(811): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+         OctopusCameraDlg.cpp
+     1>OctopusCameraDlg.cpp(358): warning C4101: 'setEM' : unreferenced local variable
+     1>OctopusCameraDlg.cpp(434): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDlg.cpp(436): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>OctopusCameraDlg.cpp(600): warning C4010: single-line comment contains line-continuation character
+     1>OctopusCameraDlg.cpp(601): warning C4010: single-line comment contains line-continuation character
+         OctopusClock.cpp
+         OctopusDoc.cpp
+         OctopusFocus.cpp
+         OctopusLaser.cpp
+     1>OctopusLaser.cpp(136): warning C4244: 'argument' : conversion from 'float' to 'LNG', possible loss of data
+     1>OctopusLaser.cpp(153): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>OctopusLaser.cpp(154): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>OctopusLaser.cpp(158): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         OctopusLasers.cpp
+         OctopusLog.cpp
+     1>OctopusLog.cpp(27): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+         OctopusObjectivePiezo.cpp
+         OctopusScope.cpp
+     1>OctopusScope.cpp(635): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+         OctopusScript.cpp
+     1>OctopusScript.cpp(156): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(222): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(229): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(233): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>OctopusScript.cpp(245): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(254): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(264): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(310): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(339): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(367): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(384): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(430): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(447): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(471): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(474): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>OctopusScript.cpp(488): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(491): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>OctopusScript.cpp(505): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(535): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(562): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : see declaration of 'sscanf'
+     1>OctopusScript.cpp(575): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusScript.cpp(578): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         OctopusShutter.cpp
+     1>OctopusShutter.cpp(329): warning C4309: '=' : truncation of constant value
+     1>OctopusShutter.cpp(331): warning C4309: '=' : truncation of constant value
+     1>OctopusShutter.cpp(530): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+         OctopusStage545.cpp
+     1>OctopusStage545.cpp(542): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>OctopusStage545.cpp(545): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         OctopusView.cpp
+     1>OctopusView.cpp(126): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
          OctopusXCite.cpp
      1>OctopusXCite.cpp(625): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
      1>OctopusXCite.cpp(788): warning C4101: 'xxx' : unreferenced local variable
+         Octopus_LED.cpp
+     1>Octopus_LED.cpp(236): warning C4244: 'argument' : conversion from 'float' to 'LNG', possible loss of data
+     1>Octopus_LED.cpp(248): warning C4244: 'argument' : conversion from 'float' to 'LNG', possible loss of data
+     1>Octopus_LED.cpp(325): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Octopus_LED.cpp(340): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Octopus_LED.cpp(352): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Octopus_LED.cpp(365): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+     1>c:\users\microscope2\documents\octopus\octopus_micro2\octopuscameradlg.cpp(344): warning C4700: uninitialized local variable 'xpixels' used
+     1>c:\users\microscope2\documents\octopus\octopus_micro2\octopuscameradlg.cpp(345): warning C4700: uninitialized local variable 'ypixels' used
        ResourceCompile:
-         All outputs are up-to-date.
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _AFXDLL /D _DEBUG /D _VC80_UPGRADE=0x0710 /D _AFXDLL /l"0x0409" /nologo /fo".\Debug\Octopus.res" Octopus.rc 
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -44,6 +165,166 @@
          LIB\libf2c.lib
          oldaapi32.lib
          OLMEM32.lib /MACHINE:I386 
+         LINK : .\Debug/Octopus.exe not found or not built by the last incremental link; performing full link
+         
+         Searching libraries
+             Searching .\LIB\PI_GCS2_DLL.lib:
+             Searching .\LIB\ASIUSB1.lib:
+             Searching oldaapi32.lib:
+             Searching olmem32.lib:
+             Searching .\LIB\MADlib.lib:
+             Searching .\LIB\Atmcd32m.lib:
+             Searching LIB\blas.lib:
+             Searching LIB\lapack.lib:
+             Searching LIB\levmar.lib:
+             Searching LIB\libf2c.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfc100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfcs100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcrtd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\kernel32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\user32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\gdi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\msimg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comdlg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\winspool.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\advapi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shell32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comctl32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shlwapi.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\windowscodecs.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\uuid.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\atlsd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ole32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oleaut32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oledlg.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\urlmon.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\OLDNAMES.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcprtd.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\MSVCRT.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\wininet.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ws2_32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\mswsock.lib:
+             Searching .\LIB\PI_GCS2_DLL.lib:
+             Searching .\LIB\ASIUSB1.lib:
+             Searching oldaapi32.lib:
+             Searching olmem32.lib:
+             Searching .\LIB\MADlib.lib:
+             Searching .\LIB\Atmcd32m.lib:
+             Searching LIB\blas.lib:
+             Searching LIB\lapack.lib:
+             Searching LIB\levmar.lib:
+             Searching LIB\libf2c.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfc100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfcs100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcrtd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\kernel32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\user32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\gdi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\msimg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comdlg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\winspool.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\advapi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shell32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comctl32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shlwapi.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\windowscodecs.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\uuid.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\atlsd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ole32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oleaut32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oledlg.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\urlmon.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\OLDNAMES.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcprtd.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\MSVCRT.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\wininet.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ws2_32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\mswsock.lib:
+             Searching .\LIB\PI_GCS2_DLL.lib:
+             Searching .\LIB\ASIUSB1.lib:
+             Searching oldaapi32.lib:
+             Searching olmem32.lib:
+             Searching .\LIB\MADlib.lib:
+             Searching .\LIB\Atmcd32m.lib:
+             Searching LIB\blas.lib:
+             Searching LIB\lapack.lib:
+             Searching LIB\levmar.lib:
+             Searching LIB\libf2c.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfc100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfcs100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcrtd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\kernel32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\user32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\gdi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\msimg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comdlg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\winspool.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\advapi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shell32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comctl32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shlwapi.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\windowscodecs.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\uuid.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\atlsd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ole32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oleaut32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oledlg.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\urlmon.lib:
+         
+         Finished searching libraries
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         
+         Searching libraries
+             Searching .\LIB\PI_GCS2_DLL.lib:
+             Searching .\LIB\ASIUSB1.lib:
+             Searching oldaapi32.lib:
+             Searching olmem32.lib:
+             Searching .\LIB\MADlib.lib:
+             Searching .\LIB\Atmcd32m.lib:
+             Searching LIB\blas.lib:
+             Searching LIB\lapack.lib:
+             Searching LIB\levmar.lib:
+             Searching LIB\libf2c.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfc100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfcs100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcrtd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\kernel32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\user32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\gdi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\msimg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comdlg32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\winspool.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\advapi32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shell32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\comctl32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\shlwapi.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\windowscodecs.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\uuid.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\atlsd.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ole32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oleaut32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\oledlg.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\urlmon.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\OLDNAMES.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcprtd.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\MSVCRT.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\wininet.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\ws2_32.lib:
+             Searching c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\lib\mswsock.lib:
+             Searching .\LIB\PI_GCS2_DLL.lib:
+             Searching .\LIB\ASIUSB1.lib:
+             Searching oldaapi32.lib:
+             Searching olmem32.lib:
+             Searching .\LIB\MADlib.lib:
+             Searching .\LIB\Atmcd32m.lib:
+             Searching LIB\blas.lib:
+             Searching LIB\lapack.lib:
+             Searching LIB\levmar.lib:
+             Searching LIB\libf2c.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfc100d.lib:
+             Searching c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\lib\mfcs100d.lib:
+         
+         Finished searching libraries
        Manifest:
          c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:".\Debug\Octopus.exe.embed.manifest" /manifest .\Debug\Octopus.exe.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
          All outputs are up-to-date.
@@ -59,4 +340,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.63
+Time Elapsed 00:00:14.74
